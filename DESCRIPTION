@@ -1,0 +1,11 @@
+Package: permstat
+Title: Calculate Permutation-based Statistics
+Version: 0.0.0.9000
+Authors@R: 
+    person("Liu", "Yiqi", , "lynutsq@gmail.com", role = c("aut", "cre"))
+Description: A tool to calculate multi defined statistics based on permutation.
+Imports: stats
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
