@@ -63,13 +63,7 @@ perm_ks <- function(x, y, alternative = "two.sided", N = 10000, seed = NULL) {
       ks_stat(x_perm, y_perm)
     })
 
-    if (alternative == "two.sided") {
-      p_val <- mean(perm_stats >= T_obs)
-    } else if (alternative == "less") {
-      p_val <- mean(perm_stats <= T_obs)
-    } else {
-      p_val <- mean(perm_stats >= T_obs)
-    }
+    p_val <- mean(perm_stats >= T_obs)
 
     return(list(
       method = "KS test (permutation)",
