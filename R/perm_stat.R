@@ -21,6 +21,7 @@
 #' x <- rlnorm(80)
 #' y <- rlnorm(100)
 #' perm_tail(x, y)
+
 perm_tail <- function(x, y, q = 0.9, N = 10000) {
   stopifnot(is.numeric(x), is.numeric(y))
   combined <- c(x, y)
