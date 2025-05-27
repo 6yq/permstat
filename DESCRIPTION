@@ -1,6 +1,6 @@
 Package: permstat
 Title: Calculate Permutation-based Statistics
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person("Liu", "Yiqi", , "lynutsq@gmail.com", role = c("aut", "cre"))
 Description: A tool to calculate multi defined statistics based on permutation.
