@@ -4,7 +4,7 @@
 \alias{perm_tail}
 \title{Tail-Sensitive Permutation Test}
 \usage{
-perm_tail(x, y, q = 0.9, N = 10000)
+perm_tail(x, y, q = 0.9, N = 10000, seed = NULL)
 }
 \arguments{
 \item{x}{Numeric vector, first sample.}
@@ -14,6 +14,8 @@ perm_tail(x, y, q = 0.9, N = 10000)
 \item{q}{Numeric scalar between 0 and 1 (default 0.9), quantile threshold for defining "tail".}
 
 \item{N}{Integer (default 10000), number of permutations.}
+
+\item{seed}{Optional integer. If provided, sets random seed for reproducibility.}
 }
 \value{
 A list with:
@@ -29,5 +31,5 @@ The test statistic is the difference in proportions of values exceeding a specif
 \examples{
 x <- rlnorm(80)
 y <- rlnorm(100)
-perm_tail(x, y)
+perm_tail(x, y, seed = 42)
 }
