@@ -4,7 +4,9 @@ Version: 0.0.1
 Authors@R: 
     person("Liu", "Yiqi", , "lynutsq@gmail.com", role = c("aut", "cre"))
 Description: A tool to calculate multi defined statistics based on permutation.
-Imports: stats
+Imports: 
+    stats,
+    transport
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
