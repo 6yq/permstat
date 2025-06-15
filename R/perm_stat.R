@@ -154,3 +154,54 @@ perm_mean <- function(x, y, N = 10000, seed = NULL) {
     perm_distribution = perm_stats
   )
 }
+
+
+#' Standard Deviation Difference Permutation Test
+#'
+#' Performs a two-sided permutation test comparing the standard deviations of two numeric samples.
+#' The test statistic is the difference in sample standard deviations.
+#'
+#' @importFrom stats sd
+#' @export
+#'
+#' @param x Numeric vector, first sample.
+#' @param y Numeric vector, second sample.
+#' @param N Integer (default 10000), number of permutations.
+#' @param seed Optional integer. If provided, sets random seed for reproducibility.
+#'
+#' @return A list with:
+#'   \item{observed_stat}{Observed difference in standard deviations}
+#'   \item{p_value}{Two-sided permutation p-value}
+#'   \item{perm_distribution}{Vector of permuted statistics}
+#'
+#' @examples
+#' perm_sd(rnorm(20, sd = 1), rnorm(30, sd = 2), seed = 123)
+
+perm_sd <- function(x, y, N = 10000, seed = NULL) {
+  stopifnot(is.numeric(x), is.numeric(y))
+  if (!is.null(seed)) set.seed(seed)
+
+  combined <- c(x, y)
+  n <- length(x)
+
+  sd_stat <- function(a, b) {
+    sd(a) - sd(b)
+  }
+
+  T_obs <- sd_stat(x, y)
+
+  perm_stats <- replicate(N, {
+    idx <- sample(length(combined), n)
+    x_perm <- combined[idx]
+    y_perm <- combined[-idx]
+    sd_stat(x_perm, y_perm)
+  })
+
+  p_val <- mean(abs(perm_stats) >= abs(T_obs))
+
+  list(
+    observed_stat = T_obs,
+    p_value = p_val,
+    perm_distribution = perm_stats
+  )
+}
